@@ -1,0 +1,47 @@
+---
+apiVersion: openfaas.com/v1alpha2
+kind: Function
+metadata:
+  name: leaderboard
+  namespace: openfaas-fn
+spec:
+  name: leaderboard
+  image: leaderboard:1.1.0
+  environment:
+    postgres_db: defaultdb
+    postgres_port: "25060"
+    postgres_sslmode: require
+  labels:
+    com.openfaas.scale.zero: "false"
+  secrets:
+  - leaderboard-app-secrets
+---
+apiVersion: openfaas.com/v1alpha2
+kind: Function
+metadata:
+  name: github-sub
+  namespace: openfaas-fn
+spec:
+  name: github-sub
+  image: github-sub:1.1.0
+  environment:
+    enforce_hmac: "true"
+    postgres_db: defaultdb
+    postgres_port: "25060"
+    postgres_sslmode: require
+  labels:
+    com.openfaas.scale.zero: "false"
+  secrets:
+  - leaderboard-app-secrets
+---
+apiVersion: openfaas.com/v1alpha2
+kind: Function
+metadata:
+  name: leaderboard-page
+  namespace: openfaas-fn
+spec:
+  name: leaderboard-page
+  image: leaderboard-page:1.1.0
+  labels:
+    com.openfaas.scale.zero: "false"
+
