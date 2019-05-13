@@ -45,7 +45,7 @@ Renders the leaderboard itself as a Vue.js app by Ken Fukuyama
 
 ## Secrets
 
-Seal your secrets:
+You can seal your secrets for use with OpenFaaS Cloud:
 
 ```
 faas-cli cloud seal \
@@ -54,7 +54,6 @@ faas-cli cloud seal \
   --literal=username="$USER" \
   --literal=host="$HOST" \
   --literal=webhook-secret="${WEBHOOK}"
-
 ```
 
 ## Running locally
