@@ -142,7 +142,7 @@ Provision Postgres 10 and set up your initial table schema and function:
 
 ```
 export CONNECTION_STRING=""
-docker run-ti postgres:10 pql ${CONNECTION_STRING}
+docker run -ti postgres:10 psql ${CONNECTION_STRING}
 ```
 
 Copy/paste from [schema-1.0.sql](sql/schema-1.0.sql)
@@ -160,6 +160,5 @@ http://alexellis.local-o6s.io:8081/leaderboard-page
 Please feel free to fork and star this repo and use it as a template for your own applications. The license is MIT.
 
 To contribute see [CONTRIBUTING.md](./CONTRIBUTING.md)
-
 
 
