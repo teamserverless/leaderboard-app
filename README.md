@@ -43,6 +43,20 @@ Renders the leaderboard itself as a Vue.js app by Ken Fukuyama
 
 * [schema-1.0.sql](sql/schema-1.0.sql)
 
+## Secrets
+
+Seal your secrets:
+
+```
+faas-cli cloud seal \
+  --name teamserverless-leaderboard-app-secrets \
+  --literal=password="$PASS" \
+  --literal=username="$USER" \
+  --literal=host="$HOST" \
+  --literal=webhook-secret="${WEBHOOK}"
+
+```
+
 ## Running locally
 
 * Deploy OpenFaaS
@@ -65,7 +79,7 @@ export HOST=""
 export WEBHOOK="secret"   # As set on the webhook page on GitHub
 
 # Kubernetes
-faas-cli secret create leaderboard-app-secrets-password
+faas-cli secret create leaderboard-app-secrets-password \
   --from-literal=password="$PASS" \
   --from-literal=username="$USER" \
   --from-literal=host="$HOST" \
